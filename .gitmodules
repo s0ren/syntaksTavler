@@ -1,0 +1,3 @@
+[submodule "vendor/railroad-diagrams"]
+	path = vendor/railroad-diagrams
+	url = https://github.com/tabatkins/railroad-diagrams.git
