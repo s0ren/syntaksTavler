@@ -1,3 +1,6 @@
 [submodule "vendor/railroad-diagrams"]
 	path = vendor/railroad-diagrams
 	url = https://github.com/tabatkins/railroad-diagrams.git
+[submodule "vendor/jquery.tocify.js"]
+	path = vendor/jquery.tocify.js
+	url = https://github.com/gfranko/jquery.tocify.js.git

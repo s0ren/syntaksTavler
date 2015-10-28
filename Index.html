@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<title>Variabler</title>
+
+    <xmp id="textblock" theme="Simplex" style="display:none;">
+            Tekst
+    </xmp>
+    
+    <script>
+        var client = new XMLHttpRequest();
+        client.open('GET', '/variabler.md', false);
+        //client.open('GET', 'index.html');
+        client.onreadystatechange = function() {
+            //alert(client.responseText);
+            document.querySelector("#textblock").innerHTML = client.responseText;
+        }
+        client.send();
+    </script>
+
+<script src="http://strapdownjs.com/v/0.2/strapdown.js"></script>
+</html>

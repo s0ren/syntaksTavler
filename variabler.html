@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Variabler</title>
+        
+        <link type="text/css" rel="stylesheet" href="vendor/jquery.tocify.js/src/stylesheets/jquery.tocify.css" />
+        <!-- jquery -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+        
+        <script src="vendor/jquery.tocify.js/src/javascripts/jquery.tocify.min.js"></script>
+        
+        
+        <link rel='stylesheet' href='vendor/railroad-diagrams/railroad-diagrams.css'>
+        <script src='vendor/railroad-diagrams/railroad-diagrams.js'></script>
+    </head>
+    <body>
+        
+        <div id="toc"></div>
+        
+        <xmp id="textblock" theme="Simplex" style="display:none;">
+                En introduktion til brug af variabler.
+        </xmp>
+
+        <script>
+            var client = new XMLHttpRequest();
+            client.open('GET', '/variabler.md', false);
+            //client.open('GET', 'index.html');
+            client.onreadystatechange = function() {
+                //alert(client.responseText);
+                document.querySelector("#textblock").innerHTML = client.responseText;
+            }
+            client.send();
+
+        </script>
+
+        <script src="http://strapdownjs.com/v/0.2/strapdown.js"></script>
+
+
+        <script>
+            ComplexDiagram(
+                Terminal('Bogstav [a-åA-Å]'),
+                ZeroOrMore(
+                    Terminal('Bogstav eller ciffer [a-åA-Å0-9]')
+                )
+            ).addTo(document.querySelector("div#VARIABELNAVN"));
+
+            ComplexDiagram(
+                Terminal('var'),
+                NonTerminal('VARIABELNAVN'),
+                Terminal(';')
+            ).addTo(document.querySelector("div#VARIABLEDECLARATION"));
+
+            ComplexDiagram(
+                Terminal('var'),
+                NonTerminal('VARIABELNAVN'),
+                Terminal('='),
+                NonTerminal('VÆRDI'),
+                Terminal(';')
+            ).addTo(document.querySelector("div#VARIABELINITIALISERING"));
+
+            var el = document.querySelector("div#VARIABLEDECLARATION");
+            console.log(el);
+        </script>
+        
+        <script>
+            //Executes your code when the DOM is ready.  Acts the same as $(document).ready().
+            $(function() {
+                //Calls the tocify method on your HTML div.
+                $("#toc").tocify();
+            });
+        </script>
+
+    </body>
+</html>
